@@ -31,5 +31,3 @@ for (i=1;i<=c;i++){
 } 
   return 0;
 }
-  std::cout << "Hello World!\n";
-}
