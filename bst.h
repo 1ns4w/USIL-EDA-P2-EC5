@@ -1,6 +1,8 @@
 #ifndef __BST_H__ //Maizo Diego
 #define __BST_H__  //kevin de lama
 
+using namespace std;
+
 template <typename T>
 class CBinaryTree
 {
@@ -31,8 +33,28 @@ public:
     }
     void insert(T &dato)
     {   internal_insert(m_pRoot, dato);   }
+    void printAsc() {
+      cout << "Ascendente:\n";
+      print(m_pRoot, true);
+    }
+    void printDesc() {
+      cout << "Descendente:\n";
+      print(m_pRoot, false);
+    }
 private:
-    void internal_insert(Node *&rParent,const T &dato);//Maizo
+    void internal_insert(Node *&rParent, T &dato);//Maizo
+    void print(Node *&parent, bool asc = true) {
+      // Node *current = &parent;
+      int index = asc ? 0 : 1;
+      if (parent->m_pChild[index] != nullptr) {
+          print(parent->m_pChild[index], asc);
+        }
+        cout << parent->getData() << "\n";
+        index = asc ? 1 : 0;
+        if (parent->m_pChild[index] != nullptr) {
+          print(parent->m_pChild[index], asc);
+        }
+    }
 };
 
 template <typename T>
